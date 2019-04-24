@@ -23,20 +23,27 @@ class Offer{
 
 }
 
-class Shop{
+class Shop extends Widget{
+
+  static List<Shop> shoplist = [];
 
   String name;
   VillagerProfession profession;
+  ShopType shopType;
   List<Offer> offers;
   int level;
 
-  Shop(this.offers, {this.profession,this.name,this.level}){
+  Shop(this.offers, {this.profession,this.name,this.level,this.shopType}){
     if(profession == null) profession = VillagerProfession.unemployed;
     if(name == null) name = "Shop";
     if(level == null) level = 1;
+    if(shopType == null) shopType = ShopType.basic;
+    shopType.addShop(this);
+    shoplist.add(this);
   }
 
-  Summon getSummon(){
+  @override
+  Widget generate(Context context) {
     var nbtOffers = [];
 
     for(var offer in offers){
@@ -52,9 +59,45 @@ class Shop{
         }
     };
 
-    return Summon(EntityType.villager,name: TextComponent(this.name),nameVisible: true,location: Location.rel(),nbt: nbt,invulnerable: true,noAI: true);
+      return Summon(EntityType.villager,name: TextComponent(this.name),nameVisible: true,location: Location.rel(),nbt: nbt,invulnerable: true,noAI: true);
   }
 
+
+}
+
+class ShopType{
+
+  static ShopType basic = ShopType("basic");
+  static List<ShopType> types = [];
+  final String name;
+  List<Shop> shops = [];
+  ShopType(this.name){
+    types.add(this);
+  }
+
+  addShop(Shop shop){
+    shops.add(shop);
+  }
+
+  Widget getRandomShop(){
+
+    List<Widget> cmds = [];
+
+    RandomScore random = RandomScore(Entity.PlayerName(name+"ShopID"),from: 0,to: shops.length,objective: "RandomShop");
+    cmds.add(random);
+    for(var j = 0; j < shops.length; j++){
+      cmds.add(If(Condition.score(random.score.matches(j)),Then: [
+        File.execute(path: "/shops/"+name+"/"+j.toString(),child: shops[j])
+      ]));
+    }
+
+    return For.of(cmds);
+  }
+
+  @override
+    String toString() {
+      return name;
+    }
 
 }
 
