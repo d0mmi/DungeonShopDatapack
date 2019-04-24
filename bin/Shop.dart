@@ -55,7 +55,8 @@ class Shop extends Widget{
         "level": this.level
         },
       "Offers": {
-        "Recipes": nbtOffers
+        "Recipes": nbtOffers,
+        "rewardExp": 0
         }
     };
 
@@ -83,7 +84,7 @@ class ShopType{
 
     List<Widget> cmds = [];
 
-    RandomScore random = RandomScore(Entity.PlayerName(name+"ShopID"),from: 0,to: shops.length,objective: "RandomShop");
+    RandomScore random = RandomScore(Entity.PlayerName(name+"ShopID"),from: 0,to: shops.length-1,objective: "RandomShop");
     cmds.add(random);
     for(var j = 0; j < shops.length; j++){
       cmds.add(If(Condition.score(random.score.matches(j)),Then: [

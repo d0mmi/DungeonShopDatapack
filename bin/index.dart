@@ -25,27 +25,32 @@ class DataPackWidget extends Widget {
         Offer(Item(ItemType.emerald,count: 1), Item(ItemType.book,count: 2)),
         Offer(Item(ItemType.emerald,count: 2), Item(ItemType.diamond,count: 3)),
         Offer(Item(ItemType.emerald,count: 3), Item(ItemType.enchanted_book,count: 4)),
-      ], name: "Test Shop",level: 2,profession: VillagerProfession.cleric);
+      ], name: "Shop1",level: 2,profession: VillagerProfession.cleric);
       Shop([
         Offer(Item(ItemType.emerald,count: 1), Item(ItemType.book,count: 2)),
         Offer(Item(ItemType.emerald,count: 2), Item(ItemType.diamond,count: 3)),
         Offer(Item(ItemType.emerald,count: 3), Item(ItemType.enchanted_book,count: 4)),
-      ], name: "Test Shop",level: 2,profession: VillagerProfession.cleric);
+      ], name: "Shop2",level: 2,profession: VillagerProfession.cleric);
       Shop([
         Offer(Item(ItemType.emerald,count: 1), Item(ItemType.book,count: 2)),
         Offer(Item(ItemType.emerald,count: 2), Item(ItemType.diamond,count: 3)),
         Offer(Item(ItemType.emerald,count: 3), Item(ItemType.enchanted_book,count: 4)),
-      ], name: "Test Shop",level: 2,profession: VillagerProfession.cleric);
+      ], name: "Shop3",level: 2,profession: VillagerProfession.cleric);
       Shop([
         Offer(Item(ItemType.emerald,count: 1), Item(ItemType.book,count: 2)),
         Offer(Item(ItemType.emerald,count: 2), Item(ItemType.diamond,count: 3)),
         Offer(Item(ItemType.emerald,count: 3), Item(ItemType.enchanted_book,count: 4)),
-      ], name: "Test Shop",level: 2,profession: VillagerProfession.cleric);
+      ], name: "Shop4",level: 2,profession: VillagerProfession.cleric);
       Shop([
         Offer(Item(ItemType.emerald,count: 1), Item(ItemType.book,count: 2)),
         Offer(Item(ItemType.emerald,count: 2), Item(ItemType.diamond,count: 3)),
         Offer(Item(ItemType.emerald,count: 3), Item(ItemType.enchanted_book,count: 4)),
-      ], name: "Test Shop",level: 2,profession: VillagerProfession.cleric);
+      ], name: "Shop5",level: 2,profession: VillagerProfession.cleric);
+      Shop([
+        Offer(Item(ItemType.emerald,count: 1), Item(ItemType.book,count: 2)),
+        Offer(Item(ItemType.emerald,count: 2), Item(ItemType.diamond,count: 3)),
+        Offer(Item(ItemType.emerald,count: 3), Item(ItemType.enchanted_book,count: 4)),
+      ], name: "Shop6",level: 2,profession: VillagerProfession.cleric);
 
   for(var i = 0; i < ShopType.types.length; i++){
     ShopType type = ShopType.types[i];
@@ -53,6 +58,7 @@ class DataPackWidget extends Widget {
   }
 
   List<Widget> load = [];
+  load.add(Scoreboard("RandomShop",addIntoLoad: false));
   load.add(TriggerCommands.getLoad());
   load.addAll([
         Tellraw(Entity.All(),show: [TextComponent("Dungeon Shop v0.1 by ",color: Color.Gold),TextComponent("D0mmi",color: Color.Aqua,clickEvent: TextClickEvent.open_url("https://github.com/d0mmi")),TextComponent(" Loaded!",color: Color.Gold)]),

@@ -13,7 +13,7 @@ class TriggerCommands{
     actions.add(Command("/scoreboard players set @s "+name+" 0"));
     cmdsMain.addAll([
       Command("/scoreboard players enable @a "+name),
-      If.not(Condition.score(Score(Entity.All(), name).matches(0)),assignTag: Entity.All(),Then: actions)
+      Execute.asat(Entity.All(scores: [Score(Entity.Selected(),name).matchesRange(Range(from: 1))]),children: actions)
     ]);
     triggerlist.add(this);
   }
