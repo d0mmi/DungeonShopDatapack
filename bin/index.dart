@@ -62,7 +62,7 @@ class DataPackWidget extends Widget {
   load.add(TriggerCommands.getLoad());
   load.addAll([
         Tellraw(Entity.All(),show: [TextComponent("Dungeon Shop v0.1 by ",color: Color.Gold),TextComponent("D0mmi",color: Color.Aqua,clickEvent: TextClickEvent.open_url("https://github.com/d0mmi")),TextComponent(" Loaded!",color: Color.Gold)]),
-        Tellraw(Entity.All(),show: [TextComponent("Submit Bugs or Suggestions ",color: Color.Gold),TextComponent("here!",color: Color.Aqua,clickEvent: TextClickEvent.open_url("https://github.com/d0mmi/TowerDefenseDatapack/issues/new"))]),
+        Tellraw(Entity.All(),show: [TextComponent("Submit Bugs or Suggestions ",color: Color.Gold),TextComponent("here!",color: Color.Aqua,clickEvent: TextClickEvent.open_url("https://github.com/d0mmi/DungeonShopDatapack/issues/new"))]),
       ]);
 
   return Pack(
